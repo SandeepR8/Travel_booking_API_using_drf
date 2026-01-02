@@ -1,0 +1,29 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+env/
+.venv/
+.env
+env
+
+# Local settings and secrets
+.env
+local_settings.py
+
+# Databases
+db.sqlite3
+
+# Media and collected static files
+/media/
+/static/
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Swagger documentation
+schema.yml
+

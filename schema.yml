@@ -1,0 +1,476 @@
+openapi: 3.0.3
+info:
+  title: Travel Booking API
+  version: 1.0.0
+  description: The allows user to book seats. The API is flexible and easy to use.
+paths:
+  /api-token-auth/:
+    post:
+      operationId: api_token_auth_create
+      tags:
+      - api-token-auth
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+  /api/BusDetails/:
+    get:
+      operationId: api_BusDetails_list
+      description: List all buses
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bus'
+          description: ''
+    post:
+      operationId: api_BusDetails_create
+      description: Create a new bus (admin only)
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bus'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Bus'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Bus'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bus'
+          description: ''
+  /api/BusDetails/{id}/:
+    get:
+      operationId: api_BusDetails_retrieve
+      description: Retrieve details of a specific bus
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Bus.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bus'
+          description: ''
+    put:
+      operationId: api_BusDetails_update
+      description: Update bus details (admin only)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Bus.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bus'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Bus'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Bus'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bus'
+          description: ''
+    patch:
+      operationId: api_BusDetails_partial_update
+      description: Partially update bus details (admin only)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Bus.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBus'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBus'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBus'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bus'
+          description: ''
+    delete:
+      operationId: api_BusDetails_destroy
+      description: Delete a bus (admin only)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Bus.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/auth/login/:
+    post:
+      operationId: api_auth_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/auth/signup/:
+    post:
+      operationId: api_auth_signup_create
+      description: User register using Username and password (token-authentication)
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpSerializers'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignUpSerializers'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignUpSerializers'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpSerializers'
+          description: ''
+  /api/bookings/:
+    post:
+      operationId: api_bookings_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingSerializers'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BookingSerializers'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BookingSerializers'
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingSerializers'
+          description: ''
+  /api/buses/:
+    get:
+      operationId: api_buses_list
+      description: List all buses
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bus'
+          description: ''
+    post:
+      operationId: api_buses_create
+      description: Create a new bus
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bus'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Bus'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Bus'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bus'
+          description: ''
+  /api/user-bookings/{user_id}/:
+    get:
+      operationId: api_user_bookings_list
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookingSerializers'
+          description: ''
+components:
+  schemas:
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - password
+      - token
+      - username
+    BookingSerializers:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        bus:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+        booking_at:
+          type: string
+          format: date-time
+          readOnly: true
+        seat:
+          type: integer
+          readOnly: true
+      required:
+      - booking_at
+      - bus
+      - id
+      - seat
+      - user
+    Bus:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        bus_name:
+          type: string
+          maxLength: 255
+        bus_code:
+          type: string
+          maxLength: 20
+        origin:
+          type: string
+          maxLength: 50
+        destination:
+          type: string
+          maxLength: 50
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,18}(?:\.\d{0,2})?$
+        features:
+          type: string
+        start_time:
+          type: string
+          format: time
+        reach_time:
+          type: string
+          format: time
+      required:
+      - bus_code
+      - bus_name
+      - destination
+      - features
+      - id
+      - origin
+      - price
+      - reach_time
+      - start_time
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - username
+    PatchedBus:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        bus_name:
+          type: string
+          maxLength: 255
+        bus_code:
+          type: string
+          maxLength: 20
+        origin:
+          type: string
+          maxLength: 50
+        destination:
+          type: string
+          maxLength: 50
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,18}(?:\.\d{0,2})?$
+        features:
+          type: string
+        start_time:
+          type: string
+          format: time
+        reach_time:
+          type: string
+          format: time
+    SignUpSerializers:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - username
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
