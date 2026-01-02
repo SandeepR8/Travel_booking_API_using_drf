@@ -42,6 +42,7 @@ Travel_booking_API_using_drf/
 ├── db.sqlite3                # *Should be .gitignored* 🚫
 └── schema.yml
 
+
 ## 🚀 Installation
 
 Run this locally:
