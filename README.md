@@ -28,6 +28,7 @@ Swagger (drf-yasg or similar)	API documentation
 SQLite (Dev)	Database (replace for production)
 
 ## 📁 Project Structure (Simplified)
+```
 Travel_booking_API_using_drf/
 ├── bookings/                 # Booking app
 │   ├── models.py
@@ -41,7 +42,7 @@ Travel_booking_API_using_drf/
 ├── manage.py
 ├── db.sqlite3                # *Should be .gitignored* 🚫
 └── schema.yml
-
+```
 
 ## 🚀 Installation
 
@@ -49,10 +50,11 @@ Run this locally:
 Clone repo
 
 ### git clone https://github.com/SandeepR8/Travel_booking_API_using_drf.git
+```
 cd Travel_booking_API_using_drf
 Create & activate Python virtual environment
 
-python -m venv venv
+python -m venv venv```
 
 ### Windows
 venv\Scripts\activate
@@ -61,7 +63,7 @@ venv\Scripts\activate
 source venv/bin/activate
 
 
-### Install dependencies
+### Install dependencies```
 
 pip install -r requirements.txt
 
@@ -71,7 +73,7 @@ python manage.py migrate
 
 Run server
 
-python manage.py runserver
+python manage.py runserver```
 
 ## 📜 API Documentation (Swagger)
 
@@ -93,7 +95,7 @@ Authorization: Bearer <your_token>
 
 If not implemented yet — consider adding JWT Authentication (industry standard).
 
-### 🗂️ Common Endpoints
+### 🗂️ Common Endpoints```
 Method	Endpoint	Description
 
 POST api/BusDetails/ creating the bus details (AdminUser only)
@@ -102,4 +104,4 @@ GET api/user-bookings/ Get the specific user booking
 POST	/api/bookings/	Create a booking
 GET	/api/bookings/<id>/	Retrieve booking
 PATCH	/api/bookings/<id>/	Update booking
-DELETE	/api/bookings/<id>/	Cancel booking
+DELETE	/api/bookings/<id>/	Cancel booking```
