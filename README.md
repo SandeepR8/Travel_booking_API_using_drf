@@ -1,10 +1,10 @@
-### 🚗 Travel Booking API using Django REST Framework
+# 🚗 Travel Booking API using Django REST Framework
 
 A RESTful Travel Booking backend API built with Django & Django REST Framework — implements endpoints for browsing travel options and managing bookings, fully documented with Swagger.
 
 This backend is suitable for integration with a frontend (mobile or web) and serves as a clean, deploy-ready portfolio project.
 
-# 🧩 Key Features
+## 🧩 Key Features
 
 📌 REST API with clean endpoints
 
@@ -16,9 +16,9 @@ This backend is suitable for integration with a frontend (mobile or web) and ser
 
 🧠 Built on scalable Django + DRF architecture
 
-# 🛠️ Ready to integrate with frontend or mobile apps
+## 🛠️ Ready to integrate with frontend or mobile apps
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Technology	Purpose
 Python	Backend language
@@ -27,7 +27,7 @@ Django REST Framework	API development
 Swagger (drf-yasg or similar)	API documentation
 SQLite (Dev)	Database (replace for production)
 
-# 📁 Project Structure (Simplified)
+## 📁 Project Structure (Simplified)
 Travel_booking_API_using_drf/
 ├── bookings/                 # Booking app
 │   ├── models.py
@@ -47,20 +47,20 @@ Travel_booking_API_using_drf/
 Run this locally:
 Clone repo
 
-# git clone https://github.com/SandeepR8/Travel_booking_API_using_drf.git
+### git clone https://github.com/SandeepR8/Travel_booking_API_using_drf.git
 cd Travel_booking_API_using_drf
 Create & activate Python virtual environment
 
 python -m venv venv
 
-# Windows
+### Windows
 venv\Scripts\activate
 
-# Linux/Mac
+### Linux/Mac
 source venv/bin/activate
 
 
-# Install dependencies
+### Install dependencies
 
 pip install -r requirements.txt
 
@@ -83,7 +83,7 @@ ReDoc (if enabled)	http://127.0.0.1:8000/api/schema/redoc/
 Swagger gives you live testing, request/response details, and auth info — it’s the best way for someone to explore your API. 
 Horilla Open Source HR Software
 
-# 🧠 Authentication :
+### 🧠 Authentication :
 Register / Login endpoint returns token
 
 Use token in request headers:
@@ -92,7 +92,7 @@ Authorization: Bearer <your_token>
 
 If not implemented yet — consider adding JWT Authentication (industry standard).
 
-# 🗂️ Common Endpoints
+### 🗂️ Common Endpoints
 Method	Endpoint	Description
 
 POST api/BusDetails/ creating the bus details (AdminUser only)
